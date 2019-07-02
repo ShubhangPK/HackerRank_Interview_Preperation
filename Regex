@@ -1,0 +1,29 @@
+//Usaage of Regular expressions
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+
+class Solution{
+
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String IP = in.next();
+            System.out.println(IP.matches(new MyRegex().pattern));
+        }
+
+    }
+}
+
+
+class MyRegex{
+
+    String num = "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])";     
+    /*
+    *Either 0 or 1 in the first place,followed by eiter 1 or 2 digits
+    *2 followed by 0 to 4 followed by any digit
+    *25 followed by a digit in 0 to 5
+    */
+    String pattern = num+"."+num+"."+num+"."+num;
+}
