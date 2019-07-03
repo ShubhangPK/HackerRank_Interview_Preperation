@@ -1,3 +1,16 @@
+/*
+                   (?: re)	     Groups regular expressions without remembering the matched text.
+                   re*         	Matches 0 or more occurrences of the preceding expression.
+                   re+	         Matches 1 or more of the previous thing.
+                   \s	          Matches the whitespace. Equivalent to [\t\n\r\f].
+                   \b	          Matches the word boundaries when outside the brackets.
+                                Matches the backspace (0x08) when inside the brackets.
+                                
+                                
+                                https://www.tutorialspoint.com/java/java_regular_expressions.htm
+*/
+
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
