@@ -11,7 +11,7 @@ public class Solution {
     // Complete the makeAnagram function below.
     static int makeAnagram(String a, String b) {
 
-                int[] count = new int[30];
+                int[] count = new int[26]; // This is the alphabet count. There are 26 alphabet in all. So, they get filled and eliminated from the array as and  when the two for loops execute. 
                 for(char c:a.toCharArray()){
                     count[c - 'a']++;
                 }
