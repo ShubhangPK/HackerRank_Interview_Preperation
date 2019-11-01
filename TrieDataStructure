@@ -1,0 +1,64 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine());
+		for(int i=0;i<t;i++){
+		    int n = Integer.parseInt(br.readLine());
+		    String a[] = br.readLine().split(" ");
+		    GFG obj  = new GFG();
+		    for(int j=0;j<n;j++){
+		        
+		        obj.insert(a[j]);
+		    }
+		    String word = br.readLine();
+		    if(obj.find(word))System.out.println(1);else System.out.println(0);
+		}
+	}
+	class TrieNode{
+	    Map<Character,TrieNode> map;
+	    boolean end;
+	    TrieNode(){
+	        map = new HashMap<>();
+	        end = false;
+	    }
+	}
+	TrieNode root = new TrieNode();
+	
+	void insert(String str){
+	    insert(root,str,0);
+	}
+	private void insert(TrieNode current,String str,int index){
+	    if(index==str.length()){
+	        current.end = true;
+	      return;
+	    }
+	    char ch = str.charAt(index);
+	    TrieNode node = current.map.get(ch);
+	    if(node==null){
+	        node = new TrieNode();
+	        current.map.put(ch,node);
+	    }
+	    insert(node,str,index+1);
+	}
+		boolean find(String str){
+	    return find(root,str,0);
+	}
+	private boolean find(TrieNode current,String str,int index){
+	    if(index==str.length()){
+	        return current.end;
+	    }
+	    char ch = str.charAt(index);
+	    TrieNode node = current.map.get(ch);
+	    if(node==null){
+	       return false;
+	    }
+	    return find(node,str,index+1);
+	}
+	
+}
