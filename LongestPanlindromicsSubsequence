@@ -1,0 +1,32 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+   while(t-->0){
+       String str = br.readLine().trim();
+            char s[] = str.toCharArray();
+        StringBuilder sb = new StringBuilder(str);
+        char rev[] = sb.reverse().toString().toCharArray();
+        int l = str.length();
+        int lps[][] = new int[l+1][l+1];
+        for(int i=0;i<=l;i++){
+            for(int j=0;j<=l;j++){
+                if(i==0||j==0)
+                lps[i][j] = 0;
+                else if(s[i-1]==rev[j-1]){
+                    lps[i][j] = lps[i-1][j-1] + 1;
+                }
+                else
+                    lps[i][j] = Math.max(lps[i][j-1],lps[i-1][j]);
+            }
+        }
+        System.out.println(lps[l][l]);
+   }
+	}
+}
